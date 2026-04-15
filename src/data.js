@@ -17,7 +17,7 @@ export const skills = [
 
 export const experiences = [
   {
-    company: 'Quantum Quality Labs',
+    company: 'Quantum Quality Lab',
     role: 'Senior Automation Tester',
     duration: 'Mar 2024 - Present',
     contributions: [
