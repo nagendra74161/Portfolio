@@ -58,7 +58,7 @@ function ContactForm() {
           type="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="tester@example.com"
+          placeholder="nagendra.mekapothula@gmail.com"
           className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-slate-100 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
         />
         {errors.email && <p className="mt-2 text-sm text-rose-400">{errors.email}</p>}
