@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import TypingText from './TypingText';
 import { typingPhrases } from '../data';
 
@@ -16,7 +16,7 @@ function About({ onViewProjects, onDownload }) {
             Automation Tester Portfolio
           </div>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            Hi, I’m a dedicated Automation Tester
+            Hi, I'm a dedicated Automation Tester
           </h1>
           <div className="mt-5 text-lg text-slate-300 sm:text-xl">
             <TypingText phrases={typingPhrases} />
@@ -47,3 +47,4 @@ function About({ onViewProjects, onDownload }) {
 }
 
 export default About;
+

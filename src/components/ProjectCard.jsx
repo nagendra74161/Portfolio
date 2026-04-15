@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 
 function ProjectCard({ project }) {
   return (
@@ -18,7 +18,7 @@ function ProjectCard({ project }) {
           rel="noreferrer"
           className="text-sm font-semibold text-slate-100 transition hover:text-accent"
         >
-          GitHub ↗
+          GitHub Link
         </a>
       </div>
       <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
@@ -38,3 +38,4 @@ function ProjectCard({ project }) {
 }
 
 export default ProjectCard;
+

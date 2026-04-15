@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LoadingScreen from './components/LoadingScreen';
@@ -83,3 +83,4 @@ function App() {
 }
 
 export default App;
+

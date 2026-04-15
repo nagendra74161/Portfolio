@@ -7,31 +7,35 @@ function TypingText({ phrases }) {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    if (index >= phrases.length) {
-      setIndex(0);
+    if (!phrases.length) {
+      setDisplay('');
       return;
     }
-    const currentText = phrases[index];
-    let timeout = null;
 
-    if (!deleting && subIndex <= currentText.length) {
-      timeout = setTimeout(() => {
-        setDisplay(currentText.slice(0, subIndex + 1));
-        setSubIndex((prev) => prev + 1);
-      }, 90);
-    } else if (deleting && subIndex >= 0) {
-      timeout = setTimeout(() => {
-        setDisplay(currentText.slice(0, subIndex - 1));
-        setSubIndex((prev) => prev - 1);
-      }, 45);
-    } else if (subIndex === currentText.length) {
-      timeout = setTimeout(() => setDeleting(true), 900);
-    } else if (deleting && subIndex === 0) {
-      timeout = setTimeout(() => {
-        setDeleting(false);
-        setIndex((prev) => (prev + 1) % phrases.length);
-      }, 500);
-    }
+    const currentText = phrases[index];
+    const timeout = setTimeout(() => {
+      if (!deleting) {
+        if (subIndex < currentText.length) {
+          const nextSubIndex = subIndex + 1;
+          setDisplay(currentText.slice(0, nextSubIndex));
+          setSubIndex(nextSubIndex);
+          return;
+        }
+
+        setDeleting(true);
+        return;
+      }
+
+      if (subIndex > 0) {
+        const nextSubIndex = subIndex - 1;
+        setDisplay(currentText.slice(0, nextSubIndex));
+        setSubIndex(nextSubIndex);
+        return;
+      }
+
+      setDeleting(false);
+      setIndex((prev) => (prev + 1) % phrases.length);
+    }, deleting ? (subIndex === 0 ? 500 : 45) : subIndex === currentText.length ? 900 : 90);
 
     return () => clearTimeout(timeout);
   }, [subIndex, deleting, index, phrases]);

@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function ContactForm() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const resetTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) {
+        clearTimeout(resetTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,10 +33,16 @@ function ContactForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!validate()) return;
+
+    if (resetTimerRef.current) {
+      clearTimeout(resetTimerRef.current);
+    }
+
     setSubmitted(true);
-    setTimeout(() => {
+    resetTimerRef.current = setTimeout(() => {
       setSubmitted(false);
       setFormData({ name: '', email: '', message: '' });
+      resetTimerRef.current = null;
     }, 2000);
   };
 
@@ -80,7 +95,8 @@ function ContactForm() {
       </div>
       <button
         type="submit"
-        className="w-full rounded-full bg-accent px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-accentSoft"
+        disabled={submitted}
+        className="w-full rounded-full bg-accent px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-accentSoft disabled:cursor-not-allowed disabled:opacity-70"
       >
         {submitted ? 'Message Sent' : 'Send Message'}
       </button>

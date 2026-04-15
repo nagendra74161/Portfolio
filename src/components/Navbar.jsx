@@ -55,6 +55,7 @@ function Navbar({ onDownload }) {
               onClick={() => setIsMenuOpen((prev) => !prev)}
               aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-slate-900/80 text-slate-100 transition hover:border-accent hover:text-accent lg:hidden"
             >
               <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
@@ -88,7 +89,7 @@ function Navbar({ onDownload }) {
           transition={{ duration: 0.25, ease: 'easeOut' }}
           className="overflow-hidden lg:hidden"
         >
-          <nav className="rounded-3xl border border-white/10 bg-slate-950/90 p-4 shadow-soft">
+          <nav id="mobile-navigation" className="rounded-3xl border border-white/10 bg-slate-950/90 p-4 shadow-soft">
             <div className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <NavLink
