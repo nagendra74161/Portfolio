@@ -19,7 +19,7 @@ function Contact() {
           <div className="rounded-3xl border border-white/10 bg-slate-950/70 p-8 text-slate-300 shadow-soft">
             <h3 className="text-xl font-semibold text-white">Get in touch</h3>
             <p className="mt-4 leading-7">
-              Email: <span className="font-medium text-white">tester@example.com</span>
+              Email: <span className="font-medium text-white">nagendra.mekapothula@gmail.com</span>
               <br />
               Phone: <span className="font-medium text-white">+91 98765 43210</span>
             </p>
